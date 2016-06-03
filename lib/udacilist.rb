@@ -33,13 +33,17 @@ class UdaciList
       return puts "Could not find any results of type #{item_type}"
   end
 
+
+  #Prints table of item information
+  #using terminal-table gem
   def all
-    puts "-" * @title.length
-    puts @title
-    puts "-" * @title.length
+    title = @title
+    headings = ["Position","Details"]
+    rows = []
     @items.each_with_index do |item, position|
-      puts "#{position + 1}) #{item.details}"
+      rows << [position + 1, item.details]
     end
+    puts Terminal::Table.new headings: headings, rows: rows, title: title
   end
 
   private

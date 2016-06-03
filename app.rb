@@ -1,6 +1,10 @@
 require 'bundler/setup'
 require 'chronic'
 require 'colorize'
+
+require 'terminal-table'
+require 'highline'
+
 # Find a third gem of your choice and add it to your project
 require 'date'
 require_relative "lib/listable"
@@ -9,6 +13,7 @@ require_relative "lib/udacilist"
 require_relative "lib/todo"
 require_relative "lib/event"
 require_relative "lib/link"
+require_relative "lib/cli"
 
 list = UdaciList.new(title: "Julia's Stuff")
 list.add("todo", "Buy more cat food", due: "2016-02-03", priority: "low")
@@ -49,3 +54,6 @@ list.all
 # ------------------------
  new_list.filter("event")
 # new_list.filter("ll")
+
+#Highline
+ cli = Cli.new(new_list)
