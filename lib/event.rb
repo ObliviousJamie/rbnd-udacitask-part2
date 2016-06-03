@@ -8,6 +8,6 @@ class EventItem
     @end_date = Chronic.parse(options[:end_date]) if options[:end_date]
   end
   def details
-      format_description(@description) + "event dates: " + format_date(date: @start_date, end_date: @end_date)
+      format_description(@description, type:"event") + "event dates: " + format_date(date: @start_date, end_date: @end_date)
   end
 end
