@@ -20,6 +20,13 @@ class UdaciList
       @items.delete_at(index - 1)
   end
 
+  #Deletes multiple items from @items
+  #selects everything but the indices
+  #to be deleted
+  def delete_multiple(*indices)
+      @items.select!.with_index{|_,index| !(indices.include?(index + 1))}
+  end
+
   def filter(item_type)
       selected = @items.select{|item| item.type == item_type} 
       return selected.each {|matched_item| puts matched_item.details} unless selected.empty?
