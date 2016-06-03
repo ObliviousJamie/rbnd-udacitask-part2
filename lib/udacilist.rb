@@ -6,6 +6,8 @@ class UdaciList
     @items = []
   end
 
+  #Adds item to @items
+  #and assigns it into the correct item
   def add(type, description, options={})
     adding_error_check(type, options)
 
@@ -15,6 +17,8 @@ class UdaciList
     @items.push LinkItem.new(description, options) if type == "link"
   end
 
+  #Checks if a valid index is given
+  #and deletes item
   def delete(index)
       deleting_error_check(index)
       @items.delete_at(index - 1)
@@ -27,6 +31,9 @@ class UdaciList
       @items.select!.with_index{|_,index| !(indices.include?(index + 1))}
   end
 
+  #Selects all items that are of a given 
+  #type and returns them
+  #if none are found returns a message
   def filter(item_type)
       selected = @items.select{|item| item.type == item_type} 
       return selected.each {|matched_item| puts matched_item.details} unless selected.empty?
@@ -48,10 +55,12 @@ class UdaciList
 
   private
 
+  #Returns if type given is valid
   def valid_type?(type)
       ["todo","event","link"].any? {|type_item| type_item == type}
   end
 
+  #Checks for InvalidItemType or InvalidPriorityValue
   def adding_error_check(type, options = {})
     valid_type = valid_type?(type)
     raise UdaciListErrors::InvalidItemType, "#{type} is not recognised" if !valid_type
@@ -62,6 +71,7 @@ class UdaciList
     end
   end
 
+  #Checks for errors to do with deleting values
   def deleting_error_check(index)
       raise UdaciListErrors::IndexExceedsListSize, "Entry at index:#{index} not found" if (@items.length < index) 
   end

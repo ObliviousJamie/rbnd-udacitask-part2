@@ -6,7 +6,9 @@ class Cli
         @list = list
         create_new_ask
     end
-
+    
+    #Asks user what kind of task they want
+    #Throws InvalidItemType if type does not exist
     def create_new_ask
         types = ["todo","link","event"]
         type = cli_interface.ask "Would you like a todo,event or link"
@@ -15,6 +17,8 @@ class Cli
         make_type(type)
     end
 
+    #Makes item of given type
+    #using user input
     def make_type(type)
         if type == "todo"
             desc = cli_interface.ask "What is the task"
