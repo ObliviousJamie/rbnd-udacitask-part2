@@ -5,6 +5,7 @@ class UdaciList
     @title = options[:title] ? options[:title] : "Untitled List"
     @items = []
   end
+
   def add(type, description, options={})
     adding_error_check(type, options)
 
@@ -19,6 +20,12 @@ class UdaciList
       @items.delete_at(index - 1)
   end
 
+  def filter(item_type)
+      selected = @items.select{|item| item.type == item_type} 
+      return selected.each {|matched_item| puts matched_item.details} unless selected.empty?
+      return puts "Could not find any results of type #{item_type}"
+  end
+
   def all
     puts "-" * @title.length
     puts @title
@@ -30,8 +37,12 @@ class UdaciList
 
   private
 
+  def valid_type?(type)
+      ["todo","event","link"].any? {|type_item| type_item == type}
+  end
+
   def adding_error_check(type, options = {})
-    valid_type =  ["todo","event","link"].any? {|type_item| type_item == type}
+    valid_type = valid_type?(type)
     raise UdaciListErrors::InvalidItemType, "#{type} is not recognised" if !valid_type
 
     if options[:priority]
