@@ -24,7 +24,7 @@ class UdaciList
       check_list.each do |pos|
           deleting_error_check if pos > @items.length
       end
-      @items.delete_if.with_index{|_,index| (check_list.include?(index + 1))}
+      @items.delete_if.with_index{|_,index_given| (check_list.include?(index_given + 1))}
   end
 
   #Selects all items that are of a given 

@@ -5,8 +5,7 @@
     2.HighLine. I used to to allow users to add new items to the list via cli
 2. Describe the 2 features you added to the project.
   a) Feature 1, allow deletion of multiple items
-  b) Feature 2, allow priority and dates to be updated for todo and dates for events
-  c) Used my two gems in an interesting way
+  b) Used my two gems in an interesting way
 
 # REFLECTIONS
 # -------------------------------------------------------
@@ -16,6 +15,6 @@ Roughly 2:30 hours
 Using the HighLine gem
 3. What two additional features did you build? Why?
     Feature 1) Allowing users to delete multiple items, I chosed this as I haven't worked with splat operation very often and wanted to try them.
-    Feature 2/3) I used gems the way I did to a) try improve my app visually and b) improve user interaction. The additon of being able to change priority and dates was a mundane task but I felt it was a core part of using the app.
+    Feature 2) I used gems the way I did to a) try improve my app visually and b) improve user interaction. 
 4. Where do you still have room to grow?
 Knowing when to use modules and exactly how to use them.
