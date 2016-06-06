@@ -47,7 +47,7 @@ list.all
 # DISPLAY UNTITLED LIST
 # ---------------------
  new_list.all
- new_list.delete_multiple(2,4,6)
+ new_list.delete(2,4,6)
  new_list.all
 
 # DEMO FILTER BY ITEM TYPE

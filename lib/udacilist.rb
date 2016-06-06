@@ -19,16 +19,12 @@ class UdaciList
 
   #Checks if a valid index is given
   #and deletes item
-  def delete(index)
-      deleting_error_check(index)
-      @items.delete_at(index - 1)
-  end
-
-  #Deletes multiple items from @items
-  #selects everything but the indices
-  #to be deleted
-  def delete_multiple(*indices)
-      @items.select!.with_index{|_,index| !(indices.include?(index + 1))}
+  def delete(*index)
+      check_list = *index
+      check_list.each do |pos|
+          deleting_error_check if pos > @items.length
+      end
+      @items.delete_if.with_index{|_,index| (check_list.include?(index + 1))}
   end
 
   #Selects all items that are of a given 
